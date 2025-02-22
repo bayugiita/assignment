@@ -1,0 +1,36 @@
+.blur {
+    backdrop-filter: blur(10px);
+}
+
+.grid-auto-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-gap: 2rem;
+    place-items: center;
+    align-items: start;
+}
+
+label[for] {
+    cursor: pointer;
+}
+
+dialog {
+    border: none;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+dialog::backdrop {
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+/*
+body {
+    font-family: sans-serif;
+    background: black;
+}
+
+form {
+    padding: 1rem;
+}
+*/
