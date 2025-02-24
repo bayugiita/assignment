@@ -7,8 +7,6 @@ use Firebase\JWT\Key;
 use \Firebase\JWT\JWT;
 
 class JWTAuth {
-    private $key = 'YOURTRUSTY'; // Secret key for encoding/decoding
-
     // Method to encode the JWT
     public function encode($data) {
         try {
@@ -20,7 +18,7 @@ class JWTAuth {
                 'data' => $data,
             );
 
-            $token = JWT::encode($payload, $this->key, 'HS256');
+            $token = JWT::encode($payload, getenv('SECRET_KEY'), 'HS256');
             return $token;
         } catch (Exception $e) {
             // If error occurs, return null
@@ -31,7 +29,7 @@ class JWTAuth {
     // Method to decode the JWT
     public function decode($jwt) {
         try {
-            $decoded = JWT::decode($jwt, new Key($this->key, 'HS256'));
+            $decoded = JWT::decode($jwt, new Key(getenv('SECRET_KEY'), 'HS256'));
             return $decoded;
         } catch (Exception $e) {
             // If error occurs, return null

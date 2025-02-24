@@ -16,6 +16,7 @@ if (token === null) {
         const res = await req.json();
         console.log(res);
         // console.log(res.message)
+        // return;
         if (!res.success) {
             localStorage.removeItem('token');
             location.href = '/login';

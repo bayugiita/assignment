@@ -9,7 +9,7 @@ class StaticPage extends BaseController {
     // ...
 
     public function home() {
-        return view('home', ['title' => "Home"]);
+        return view('home', ['title' => "Home", 'activenav' => 'home']);
     }
 
     public function view(string $page = 'home') {
@@ -18,6 +18,6 @@ class StaticPage extends BaseController {
             throw new PageNotFoundException("The requested URL /$page was not found on this server");
         }
 
-        return view($page, ['title' => ucfirst($page)]);
+        return view($page, ['title' => ucfirst($page), 'activenav' => $page]);
     }
 }
