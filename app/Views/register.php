@@ -2,8 +2,8 @@
 <?=$this->section('head');?>
 <?=$this->include('templates\style');?>
 <script>
-    // const token = localStorage.getItem('token');
-    // if (token !== null) {
+    // const jwt = localStorage.getItem('jwt');
+    // if (jwt !== null) {
     //     location.href = '/';
     // }
 </script>
@@ -74,7 +74,7 @@ form.addEventListener('submit', async (e) => {
             // location.href = '<?=base_url();?>';
             console.log(res);
             console.log('success')
-            localStorage.setItem('token', res.token);
+            localStorage.setItem('jwt', res.jwt);
             location.href = '/';
         }
     } catch (e) {

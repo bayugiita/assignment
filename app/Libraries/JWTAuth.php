@@ -18,8 +18,8 @@ class JWTAuth {
                 'data' => $data,
             );
 
-            $token = JWT::encode($payload, getenv('SECRET_KEY'), 'HS256');
-            return $token;
+            $jwt = JWT::encode($payload, getenv('SECRET_KEY'), 'HS256');
+            return $jwt;
         } catch (Exception $e) {
             // If error occurs, return null
             return null;
@@ -38,31 +38,31 @@ class JWTAuth {
     }
 
     public function verify() {
-        $request             = request();
-        $authorizationHeader = $request->getHeader('Authorization');
-        $result              = ['success' => false, 'message' => 'Invalid credentials'];
+        $request    = request();
+        $authHeader = $request->getHeader('Authorization');
+        $result     = ['success' => false, 'message' => 'Invalid credentials'];
 
-        if ($authorizationHeader === null) {
+        if ($authHeader === null) {
             $result['message'] = 'Missing auth header';
             return $result;
         }
 
-        $jwt = str_replace('Bearer ', '', $authorizationHeader->getValue());
+        $jwt = str_replace('Bearer ', '', $authHeader->getValue());
 
         if ($jwt === null) {
-            $result['message'] = 'Missing token';
+            $result['message'] = 'Missing JWT';
             return $result;
         }
 
         $decoded = $this->decode($jwt);
 
         if ($decoded === null) {
-            $result['message'] = 'Invalid token';
+            $result['message'] = 'Invalid JWT';
             return $result;
         }
 
         $result['success'] = true;
-        $result['message'] = 'Valid token';
+        $result['message'] = 'Valid JWT';
         return $result;
     }
 }

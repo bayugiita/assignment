@@ -9,6 +9,6 @@
 <!--
 <link rel="stylesheet" href="/simple-sidebar.css" />
 <link rel="stylesheet" href="/style.css" />
-<script src="/hastoken.js"></script>
+<script src="/hasjwt.js"></script>
 <link rel="stylesheet" href="/datatables.min.css" />
  -->

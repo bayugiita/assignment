@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css" />
         <link rel="stylesheet" href="/simplesidebar.css" />
         <link rel="stylesheet" href="/style.css" />
-        <script src="/hastoken.js"></script>
+        <script src="/hasjwt.js"></script>
     </head>
 
     <body>

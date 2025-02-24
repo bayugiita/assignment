@@ -3,7 +3,7 @@
 <?=$this->include('templates\style');?>
 <link rel="stylesheet" href="/simple-sidebar.css" />
 <link rel="stylesheet" href="/style.css" />
-<script src="/hastoken.js"></script>
+<script src="/hasjwt.js"></script>
 <?=$this->endSection();?>
 <?=$this->section('body');?>
 <div class="d-flex" id="wrapper">

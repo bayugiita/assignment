@@ -1,6 +1,6 @@
-const token = localStorage.getItem("token");
+const jwt = localStorage.getItem('jwt');
 
-if (token === null) {
+if (jwt === null) {
     location.href = '/login';
 }
 
@@ -9,7 +9,7 @@ if (token === null) {
         const req = await fetch('/auth/verify', {
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + jwt
             }
         });
 
@@ -18,7 +18,7 @@ if (token === null) {
         // console.log(res.message)
         // return;
         if (!res.success) {
-            localStorage.removeItem('token');
+            localStorage.removeItem('jwt');
             location.href = '/login';
         }
     } catch (e) {

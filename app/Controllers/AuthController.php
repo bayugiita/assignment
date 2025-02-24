@@ -40,7 +40,7 @@ class AuthController extends Controller {
 
         // Generate the token
         try {
-            $token = $jwtAuth->encode([
+            $jwt = $jwtAuth->encode([
                 'id'    => 1,
                 'email' => 'test@mail.com',
                 'name'  => 'somebody',
@@ -49,11 +49,11 @@ class AuthController extends Controller {
             return $this->respond([
                 'message' => 'Successfully logged in',
                 'success' => true,
-                'token'   => $token,
+                'jwt'     => $jwt,
             ], 200);
         } catch (Exception $e) {
             return $this->respond([
-                'message' => 'Error generating token',
+                'message' => 'Error generating JWT',
                 'success' => false,
             ], 500);
         }
