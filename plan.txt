@@ -1,0 +1,50 @@
+Plan
+
+Database structure
+DB driver: it's either mysql, postgre, or sqlite
+DB name: assignment
+tables:
+1. user
+ - id int primary autoincrement
+ - name varchar
+ - email varchar unique
+ - password varchar
+ - image (using varchar if we store the path to the image, using blob if we store the image directly)
+ - createdat timestamp
+ - updatedat timestamp
+2. product
+ - id int primary autoincrement
+ - name varchar unique
+ - typeid int
+ - baseprice int
+ - sellprice int
+ - stock int
+ - image (same as user)
+3. producttype
+ - id int primary autoincrement
+ - name varchar unique
+
+There will be no admin, essentially every user is an admin
+
+The web page will consist of
+1. login page
+2. register page
+3. home page (protected), the submenu:
+ - add product
+ - edit product
+ - delete product
+4. profile page (protected)
+ - edit profile
+ - delete current user
+
+The session management will be using JWT, each time the user access the protected page, they will need to have
+JWT on the authorization header of the fetch request, if this header is missing the user will be required to
+login/register if the user doesn't have an account yet
+
+The JWT is stored in localStorage in the front end, when the user successfully logged in the response will contain
+JWT and it will be stored to the localStorage and user will be redirected to the home page
+
+Later when user making request, the JWT will retrieved from the localStorage and appended to the authorization
+bearer header
+
+When the user is trying to logout, we only have to remove the JWT from the front end
