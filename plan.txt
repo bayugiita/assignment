@@ -20,9 +20,13 @@ tables:
  - sellprice int
  - stock int
  - image (same as user)
+ - createdat timestamp
+ - updatedat timestamp
 3. producttype
  - id int primary autoincrement
  - name varchar unique
+ - createdat timestamp
+ - updatedat timestamp
 
 There will be no admin, essentially every user is an admin
 
